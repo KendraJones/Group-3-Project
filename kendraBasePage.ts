@@ -7,6 +7,8 @@ export class kendraBasePage extends BasePage {
     english: By = By.id('js-link-box-en')
     currentEvents: By = By.xpath('//*[@id="mw-content-text"]/div[1]/div/div[3]/ul/li[1]/a');
     mainPage: By = By.id('n-mainpage-description');
+    mainText: By = By.id('Welcome_to_Wikipedia')
+    mycoText: By = By.xpath('//*[@id="mw-content-text"]/div[3]/ul/li[1]/div[1]/a/span')
 
     constructor() {
         super({url: "https://www.wikipedia.org/"})

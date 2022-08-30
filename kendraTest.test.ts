@@ -8,11 +8,10 @@ test('Testing functionality of the Search Bar', async () => {
     await kendra.searchBar('quality assurance')
     let text = await kendra.getResults()
     expect(text).toContain('Quality assurance')
-    await fs.writeFile(`${__dirname}/screenshots/wikipediaScreenshots.png`, await kendra.driver.takeScreenshot(), 'base64', (e) => {
+    await fs.writeFile(`${__dirname}/screenshots/qa.png`, await kendra.driver.takeScreenshot(), 'base64', (e) => {
         if (e) console.error(e)
         else console.log("Screenshot Successful!")
     });
-    //await kendra.driver.quit()
 });
 test('Testing the side bar links, Current Events and Main Page', async () => {
     await kendra.navigate()
@@ -23,14 +22,17 @@ test('Testing the side bar links, Current Events and Main Page', async () => {
     await kendra.click(kendra.mainPage)
     let mainText = await kendra.getResults()
     expect(mainText).toContain('Welcome to ')
-    //await kendra.driver.quit()
+    //await fs.writeFile(`${__dirname}/screenshots/mainPage.png`, await kendra.driver.takeScreenshot(), 'base64', (e) => {
+    //    if (e) console.error(e)
+    //    else console.log("Screenshot Successful!")
+    //});
 });
 test('Testing editing an article', async () => {
+    await kendra.navigate()
     await kendra.click(kendra.search)
     await kendra.searchBar('mycology')
     let mycoText = await kendra.getResults()
     expect(mycoText).toContain('Mycology')
-    //await kendra.driver.quit()
 });
 
 afterAll(async () => {
