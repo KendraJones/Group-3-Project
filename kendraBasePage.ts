@@ -9,6 +9,10 @@ export class kendraBasePage extends BasePage {
     mainPage: By = By.id('n-mainpage-description');
     mainText: By = By.id('Welcome_to_Wikipedia')
     mycoText: By = By.xpath('//*[@id="mw-content-text"]/div[3]/ul/li[1]/div[1]/a/span')
+    edit: By = By.id('ca-edit')
+    textArea: By = By.xpath('//*[@id="wpTextbox1"]')
+    showPreview: By = By.id('wpPreview')
+    startEditing: By = By.className('oo-ui-buttonElement-button')
 
     constructor() {
         super({url: "https://www.wikipedia.org/"})
