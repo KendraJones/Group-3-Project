@@ -13,34 +13,14 @@ test('Testing functionality of the Search Bar', async () => {
         else console.log("Screenshot Successful!")
     });
 });
-test('Testing the side bar links, Current Events and Main Page', async () => {
+test('Testing the functionality of the Side Bar', async () => {
     await kendra.navigate()
     await kendra.click(kendra.english)
     await kendra.click(kendra.currentEvents)
-    let text = await kendra.getResults()
-    expect(text).toContain('Worldwide current events');
-    await kendra.click(kendra.mainPage)
-    let mainText = await kendra.getResults()
-    expect(mainText).toContain('Welcome to ')
-    await fs.writeFile(`${__dirname}/screenshots/mainPage.png`, await kendra.driver.takeScreenshot(), 'base64', (e) => {
-        if (e) console.error(e)
-        else console.log("Screenshot Successful!")
-    });
-});
-test('Testing editing an article', async () => {
-    await kendra.navigate()
-    await kendra.click(kendra.search)
-    await kendra.searchBar('mycology')
-    let mycoText = await kendra.getResults()
-    expect(mycoText).toContain('Mycology')
-    await kendra.click(kendra.edit)
-    await kendra.getElement(kendra.startEditing) // Unable to interact with this, but it is needed in order to Edit
-    await kendra.click(kendra.textArea)
-    await kendra.setInput(kendra.textArea, 'Mycology is cool!')
-    await kendra.click(kendra.showPreview)
-    let preview = await kendra.getResults()
-    expect(preview).toContain('mycology is cool!')
-    await fs.writeFile(`${__dirname}/screenshots/editPage.png`, await kendra.driver.takeScreenshot(), 'base64', (e) => {
+    await kendra.getElement(kendra.cEvents)
+    let ceText = await kendra.getResults()
+    expect(ceText).toContain('Current events')
+    await fs.writeFile(`${__dirname}/screenshots/ce.png`, await kendra.driver.takeScreenshot(), 'base64', (e) => {
         if (e) console.error(e)
         else console.log("Screenshot Successful!")
     });
