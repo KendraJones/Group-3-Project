@@ -18,13 +18,20 @@ test('Testing the functionality of the Side Bar', async () => {
     await kendra.click(kendra.english)
     await kendra.click(kendra.currentEvents)
     await kendra.getElement(kendra.cEvents)
-    let ceText = await kendra.getResults()
-    expect(ceText).toContain('Current events')
+    let cEvents = await kendra.getResults()
+    expect(cEvents).toContain('Current events')
     await fs.writeFile(`${__dirname}/screenshots/ce.png`, await kendra.driver.takeScreenshot(), 'base64', (e) => {
         if (e) console.error(e)
         else console.log("Screenshot Successful!")
     });
+    await kendra.click(kendra.mainPage)
+    await (await kendra.getElement(kendra.mainText)).getText()
+    await fs.writeFile(`${__dirname}/screenshots/mp.png`, await kendra.driver.takeScreenshot(), 'base64', (e) => {
+        if (e) console.error(e)
+        else console.log("Screenshot Successful!")
+    });
 });
+
 
 afterAll(async () => {
     await kendra.driver.quit()
