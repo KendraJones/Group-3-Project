@@ -31,8 +31,6 @@ test('Testing the functionality of the Side Bar', async () => {
         else console.log("Screenshot Successful!")
     });
 });
-
-
 afterAll(async () => {
     await kendra.driver.quit()
 });
